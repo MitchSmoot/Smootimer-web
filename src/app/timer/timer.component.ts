@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
 @Component({
-    templateUrl: './timer.component.html'
+  templateUrl: './timer.component.html'
 })
 export class TimerComponent {}
