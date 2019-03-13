@@ -1,9 +1,12 @@
-<div class="timer-block">
-  <div class="card text-center">
+<div class="timer-block container">
+  <div class="card text-center" style="width: 100%; height: 300px; text-align: center; margin-top: 40px">
     <div>
-      <timeDisplay class="timer-display">00:00:00</timeDisplay>
+      <span class="timer-display">{{timeCounter}}</span>
       <div>
-        <input type="button" id="timerButton" value="Start" class="timer-button">
+        <button class="btn btn-warning"
+          (click)="timerButtonClicked()">
+          {{buttonText}}
+        </button>
       </div>
     </div>
   </div>
