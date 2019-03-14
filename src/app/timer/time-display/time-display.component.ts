@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, HostListener } from '@angular/core';
 
 @Component({
   selector: 'time-display',
@@ -6,28 +6,36 @@ import { Component, OnDestroy } from '@angular/core';
   styleUrls: ['time-display.component.scss']
 })
 export class TimeDisplayComponent implements OnDestroy {
-  
+
   timeCounter: number = 0;
   timing: boolean;
   timerRef;
   buttonText: string = "start"
+  keyBuffer: boolean = false;
 
   timerButtonClicked(): void {
     if (!this.timing) {
       this.startTimer()
+      this.keyBuffer = true;
     } else if (this.timing) {
       this.stopTimer()
+      this.keyBuffer = false;
     }
   }
 
-  onKeyUp(event): void {
-    if (!this.timing) {
+  @HostListener('window:keyup', ['$event'])
+  onKeyUp(event: KeyboardEvent): void {
+    if (!this.timing && this.keyBuffer === false) {
       this.startTimer()
+      this.keyBuffer = true;
+    } else {
+      this.keyBuffer = false;
     }
     console.log(event);
   }
 
-  onKeyDown(event): void {
+  @HostListener('window:keydown', ['$event'])
+  onKeyDown(event: KeyboardEvent): void {
     if (this.timing) {
       this.stopTimer()
     }
