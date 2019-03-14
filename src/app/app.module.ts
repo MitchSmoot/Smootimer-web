@@ -16,7 +16,8 @@ import { ApplicationHomeComponent } from './home/app-home.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,7 +10,7 @@ export class TimeDisplayComponent implements OnDestroy {
   timeCounter: number = 0;
   timing: boolean;
   timerRef;
-  buttonText: string = "start"
+  buttonText: string = "Start"
   keyBuffer: boolean = false;
 
   timerButtonClicked(): void {
@@ -31,7 +31,6 @@ export class TimeDisplayComponent implements OnDestroy {
     } else {
       this.keyBuffer = false;
     }
-    console.log(event);
   }
 
   @HostListener('window:keydown', ['$event'])
@@ -39,7 +38,6 @@ export class TimeDisplayComponent implements OnDestroy {
     if (this.timing) {
       this.stopTimer()
     }
-    console.log(event);
   }
 
   startTimer(): void {

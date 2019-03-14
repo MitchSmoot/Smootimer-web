@@ -1,7 +1,7 @@
 <div class="timer-block container">
   <div class="card text-center" style="width: 100%; height: 300px; text-align: center; margin-top: 40px">
     <div>
-      <span class="timer-display">{{timeCounter}}</span>
+      <span class="timer-display">{{timeCounter | timeDisplay}}</span>
       <div>
         <div class="btn btn-warning"
           (click)="timerButtonClicked()">
