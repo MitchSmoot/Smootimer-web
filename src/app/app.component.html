@@ -1,5 +1,14 @@
 <app-nav></app-nav>
 
+<div *ngIf="fireAuth.user | async as user; else showLogin">
+  <h1>Hello {{user.displayName}}!</h1>
+  <button (click)="logout()">Logout</button>
+</div>
+<ng-template #showLogin>
+  <p>Please Login</p>
+  <button (click)="login()">Login with Google</button>
+</ng-template>
+
 <ul>
   <li class="text" *ngFor="let item of items | async">
     {{item.name}}
