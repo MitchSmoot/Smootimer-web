@@ -7,14 +7,22 @@ import { Component, OnDestroy, HostListener } from '@angular/core';
 })
 export class TimeDisplayComponent implements OnDestroy {
 
-  timeCounter: number = 0;
+  timeCounter: number | any = 0;
   timing: boolean;
   timerRef;
+  countdownRef;
+  countdown: number = 15;
+  countingDown: boolean;
   buttonText: string = "Start"
   keyBuffer: boolean = false;
+  countDownTimerEnabled: boolean;
 
   timerButtonClicked(): void {
-    if (!this.timing) {
+    if (this.countDownTimerEnabled) {
+      this.startCountdown()
+    } else if (this.countingDown === true) {
+      this.stopCountdown()
+    } else if (!this.timing) {
       this.startTimer()
       this.keyBuffer = true;
     } else if (this.timing) {
@@ -58,6 +66,17 @@ export class TimeDisplayComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     clearInterval(this.timerRef);
+  }
+
+  startCountdown(): void {
+    this.countingDown = true;
+    this.countdownRef = setInterval(() => 
+    this.countdown = this.countdown - 1)
+  }
+
+  stopCountdown(): void {
+    this.countingDown = false;
+    clearInterval(this.countdownRef);
   }
 
 }

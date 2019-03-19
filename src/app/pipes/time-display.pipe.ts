@@ -7,6 +7,20 @@ export class TimeDisplayPipe implements PipeTransform {
         const milliseconds = time % 1000;
         const seconds = ((time % 60000) - milliseconds) / 1000;
         const minutes = (time - (seconds * 1000) - milliseconds) / 60000 ;
-        return (minutes + ':' + seconds + ':' + milliseconds);
+        let displayedMilliseconds: string;
+        let displayedSeconds: string;
+        if (milliseconds <= 99) { 
+            displayedMilliseconds = "0" + milliseconds.toString();
+        } else if (milliseconds <= 9) {
+            displayedMilliseconds = "00" + milliseconds.toString();
+        } else {
+            displayedMilliseconds = milliseconds.toString();
+        }
+        if (seconds <= 9) {
+            displayedSeconds = "0" + seconds.toString()
+        } else {
+            displayedSeconds = seconds.toString();
+        }
+        return (minutes + ':' + displayedSeconds + ':' + displayedMilliseconds);
     }
 }
