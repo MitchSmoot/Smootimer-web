@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyDw3p5lQResSCPO3hIn0FuSDFl_4uZB7mE",
+    authDomain: "smootimer-firebase.firebaseapp.com",
+    databaseURL: "https://smootimer-firebase.firebaseio.com",
+    projectId: "smootimer-firebase",
+    storageBucket: "smootimer-firebase.appspot.com",
+    messagingSenderId: "326693363959"
+  }
 };
 
 /*
