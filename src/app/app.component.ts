@@ -10,14 +10,15 @@ import { auth } from 'firebase';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  items: Observable<any[]>;
+
+  solves: Observable<any[]>;
+
   constructor(
     db: AngularFirestore,
     public fireAuth:AngularFireAuth
     ) {
-    this.items = db.collection('items').valueChanges();
+    this.solves = db.collection('solves').valueChanges();
   }
-  title = 'smootimer-web';
 
   login() {
     this.fireAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
