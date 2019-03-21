@@ -15,7 +15,7 @@ export class AppComponent {
 
   constructor(
     db: AngularFirestore,
-    public fireAuth:AngularFireAuth
+    public fireAuth: AngularFireAuth
     ) {
     this.solves = db.collection('solves').valueChanges();
   }

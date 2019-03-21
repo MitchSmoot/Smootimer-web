@@ -9,18 +9,18 @@ export class TimeDisplayPipe implements PipeTransform {
         const minutes = (time - (seconds * 1000) - milliseconds) / 60000 ;
         let displayedMilliseconds: string;
         let displayedSeconds: string;
-        if (milliseconds <= 99) { 
-            displayedMilliseconds = "0" + milliseconds.toString();
+        if (milliseconds <= 99) {
+            displayedMilliseconds = '0' + milliseconds.toString();
         } else if (milliseconds <= 9) {
-            displayedMilliseconds = "00" + milliseconds.toString();
+            displayedMilliseconds = '00' + milliseconds.toString();
         } else {
             displayedMilliseconds = milliseconds.toString();
         }
         if (seconds <= 9) {
-            displayedSeconds = "0" + seconds.toString()
+            displayedSeconds = '0' + seconds.toString();
         } else {
             displayedSeconds = seconds.toString();
         }
-        return (minutes + ':' + displayedSeconds + ':' + displayedMilliseconds);
+        return (minutes + ':' + displayedSeconds + '.' + displayedMilliseconds);
     }
 }

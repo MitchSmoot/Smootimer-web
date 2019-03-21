@@ -7,7 +7,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
     templateUrl: 'time-list.component.html'
 })
 export class TimeListComponent {
-  solves: Observable<any[]>
+  solves: Observable<any[]>;
   constructor(
     db: AngularFirestore
   ) {

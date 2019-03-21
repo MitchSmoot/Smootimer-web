@@ -13,20 +13,20 @@ export class TimeDisplayComponent implements OnDestroy {
   countdownRef;
   countdown: number = 15;
   countingDown: boolean;
-  buttonText: string = "Start"
+  buttonText: string = 'Start';
   keyBuffer: boolean = false;
   countDownTimerEnabled: boolean;
 
   timerButtonClicked(): void {
     if (this.countDownTimerEnabled) {
-      this.startCountdown()
+      this.startCountdown();
     } else if (this.countingDown === true) {
-      this.stopCountdown()
+      this.stopCountdown();
     } else if (!this.timing) {
-      this.startTimer()
+      this.startTimer();
       this.keyBuffer = true;
     } else if (this.timing) {
-      this.stopTimer()
+      this.stopTimer();
       this.keyBuffer = false;
     }
   }
@@ -34,7 +34,7 @@ export class TimeDisplayComponent implements OnDestroy {
   @HostListener('window:keyup', ['$event'])
   onKeyUp(event: KeyboardEvent): void {
     if (!this.timing && this.keyBuffer === false) {
-      this.startTimer()
+      this.startTimer();
       this.keyBuffer = true;
     } else {
       this.keyBuffer = false;
@@ -44,14 +44,14 @@ export class TimeDisplayComponent implements OnDestroy {
   @HostListener('window:keydown', ['$event'])
   onKeyDown(event: KeyboardEvent): void {
     if (this.timing) {
-      this.stopTimer()
+      this.stopTimer();
     }
   }
 
   startTimer(): void {
     this.timeCounter = 0;
     this.timing = true;
-    this.buttonText = "Stop"
+    this.buttonText = 'Stop';
     const startTime = Date.now() - (this.timeCounter || 0);
     this.timerRef = setInterval(() => {
       this.timeCounter = Date.now() - startTime;
@@ -60,7 +60,7 @@ export class TimeDisplayComponent implements OnDestroy {
 
   stopTimer(): void {
     this.timing = false;
-    this.buttonText = "Start"
+    this.buttonText = 'Start';
     clearInterval(this.timerRef);
   }
 
@@ -70,8 +70,8 @@ export class TimeDisplayComponent implements OnDestroy {
 
   startCountdown(): void {
     this.countingDown = true;
-    this.countdownRef = setInterval(() => 
-    this.countdown = this.countdown - 1)
+    this.countdownRef = setInterval(() =>
+    this.countdown = this.countdown - 1);
   }
 
   stopCountdown(): void {
