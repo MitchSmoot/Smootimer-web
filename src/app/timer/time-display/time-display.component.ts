@@ -1,4 +1,8 @@
 import { Component, OnDestroy, HostListener } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs/internal/Observable';
+
+export interface Solve { time: number; }
 
 @Component({
   selector: 'app-time-display',
@@ -6,6 +10,15 @@ import { Component, OnDestroy, HostListener } from '@angular/core';
   styleUrls: ['time-display.component.scss']
 })
 export class TimeDisplayComponent implements OnDestroy {
+
+  solves: Observable<any[]>;
+  private solvesCollection: AngularFirestoreCollection<Solve>;
+
+  constructor(
+    db: AngularFirestore
+  ) {
+    this.solves = db.collection('solves').valueChanges();
+  }
 
   timeCounter: number | any = 0;
   timing: boolean;
@@ -77,6 +90,10 @@ export class TimeDisplayComponent implements OnDestroy {
   stopCountdown(): void {
     this.countingDown = false;
     clearInterval(this.countdownRef);
+  }
+
+  submitTime(): void {
+    this.solvesCollection.add({time: this.timeCounter});
   }
 
 }

@@ -15,4 +15,8 @@ export class TimeListComponent {
   ) {
     this.solves = db.collection('solves').valueChanges();
   }
+
+  log(event) {
+    console.log(event);
+  }
 }
