@@ -1,7 +1,7 @@
 import { Component, OnDestroy, HostListener } from '@angular/core';
 
 @Component({
-  selector: 'time-display',
+  selector: 'app-time-display',
   templateUrl: 'time-display.component.html',
   styleUrls: ['time-display.component.scss']
 })

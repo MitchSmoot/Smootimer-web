@@ -4,14 +4,16 @@ import { TimerComponent } from './timer.component';
 import { TimeDisplayComponent } from './time-display/time-display.component';
 import { TimeDisplayPipe } from '../pipes/time-display.pipe';
 import { TimeListComponent } from './time-list/time-list.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-  imports: [TimerRoutingModule],
+  imports: [TimerRoutingModule, CommonModule],
   declarations: [
     TimerComponent,
     TimeDisplayComponent,
     TimeDisplayPipe,
     TimeListComponent
-  ]
+  ],
+  exports: []
 })
 export class TimerModule {}

@@ -3,11 +3,13 @@ import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
-    selector: 'time-list',
+    selector: 'app-time-list',
     templateUrl: 'time-list.component.html'
 })
 export class TimeListComponent {
+
   solves: Observable<any[]>;
+
   constructor(
     db: AngularFirestore
   ) {
