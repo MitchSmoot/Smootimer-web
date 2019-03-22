@@ -9,8 +9,18 @@ export class TimeService {
 
   solves: Observable<any[]>;
 
-  constructor( db: AngularFirestore) {
+  constructor( private db: AngularFirestore) {
     this.solves = db.collection('solves').valueChanges();
+  }
+
+  addSolve(solve: any): any {
+    this.db.collection('solves').add({
+      time: solve.time,
+    });
+  }
+
+  deleteSolve(id) {
+    this.db.collection('solves').doc(id).delete();
   }
 
 }

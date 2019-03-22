@@ -1,8 +1,6 @@
 <ul>
   <li class="text" *ngFor="let solve of timeService.solves | async">
-    {{solve.time }}
-    <!-- {{log(solve)}} -->
+    {{solve.time | timeDisplay}}
+    {{log(solve)}}
   </li>
 </ul>
-
-<h1>Time List!!</h1>

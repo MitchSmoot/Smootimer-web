@@ -1,6 +1,7 @@
 import { Component, OnDestroy, HostListener } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs/internal/Observable';
+import { TimeService } from 'src/app/core/services/time.service';
 
 export interface Solve { time: number; }
 
@@ -15,7 +16,8 @@ export class TimeDisplayComponent implements OnDestroy {
   private solvesCollection: AngularFirestoreCollection<Solve>;
 
   constructor(
-    db: AngularFirestore
+    db: AngularFirestore,
+    private timeService: TimeService
   ) {
     this.solves = db.collection('solves').valueChanges();
   }
@@ -24,10 +26,10 @@ export class TimeDisplayComponent implements OnDestroy {
   timing: boolean;
   timerRef;
   countdownRef;
-  countdown: number = 15;
+  countdown = 15;
   countingDown: boolean;
-  buttonText: string = 'Start';
-  keyBuffer: boolean = false;
+  buttonText = 'Start';
+  keyBuffer = false;
   countDownTimerEnabled: boolean;
 
   timerButtonClicked(): void {
@@ -94,7 +96,11 @@ export class TimeDisplayComponent implements OnDestroy {
   }
 
   submitTime(): void {
-    this.solvesCollection.add({time: this.timeCounter});
+    this.timeService.addSolve({time: this.timeCounter});
+  }
+
+  deleteTime(id): void {
+    this.timeService.deleteSolve(id);
   }
 
 }
