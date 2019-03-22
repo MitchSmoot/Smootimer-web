@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { TimeService } from 'src/app/core/services/time.service';
 
 @Component({
     selector: 'app-time-list',
@@ -8,13 +7,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class TimeListComponent {
 
-  solves: Observable<any[]>;
-
   constructor(
-    db: AngularFirestore
-  ) {
-    this.solves = db.collection('solves').valueChanges();
-  }
+    public timeService: TimeService
+  ) {  }
 
   log(event) {
     console.log(event);

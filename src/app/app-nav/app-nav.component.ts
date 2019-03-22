@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../services/authentication.service';
+import { AuthenticationService } from '../core/services/authentication.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
@@ -7,7 +7,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
   templateUrl: './app-nav.component.html',
   styleUrls: ['./app-nav.component.scss']
 })
-export class ApplicationNavComponent implements OnInit{
+export class ApplicationNavComponent implements OnInit {
   constructor(
     public authService: AuthenticationService,
     public fireAuth: AngularFireAuth
