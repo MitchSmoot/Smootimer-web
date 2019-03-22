@@ -40,6 +40,7 @@ export class TimeDisplayComponent implements OnDestroy {
       this.keyBuffer = true;
     } else if (this.timing) {
       this.stopTimer();
+      this.submitTime();
       this.keyBuffer = false;
     }
   }

@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase';
+import { AuthenticationService } from './services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -15,16 +14,16 @@ export class AppComponent {
 
   constructor(
     db: AngularFirestore,
-    public fireAuth: AngularFireAuth
+    private authService: AuthenticationService
     ) {
     this.solves = db.collection('solves').valueChanges();
   }
 
   login() {
-    this.fireAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    this.authService.login();
   }
 
   logout() {
-    this.fireAuth.auth.signOut();
+    this.authService.logout();
   }
 }
