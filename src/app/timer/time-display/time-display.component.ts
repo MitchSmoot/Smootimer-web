@@ -3,24 +3,12 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { Observable } from 'rxjs/internal/Observable';
 import { TimeService } from 'src/app/core/services/time.service';
 
-export interface Solve { time: number; }
-
 @Component({
   selector: 'app-time-display',
   templateUrl: 'time-display.component.html',
   styleUrls: ['time-display.component.scss']
 })
 export class TimeDisplayComponent implements OnDestroy {
-
-  solves: Observable<any[]>;
-  private solvesCollection: AngularFirestoreCollection<Solve>;
-
-  constructor(
-    db: AngularFirestore,
-    private timeService: TimeService
-  ) {
-    this.solves = db.collection('solves').valueChanges();
-  }
 
   timeCounter: number | any = 0;
   timing: boolean;
@@ -31,6 +19,10 @@ export class TimeDisplayComponent implements OnDestroy {
   buttonText = 'Start';
   keyBuffer = false;
   countDownTimerEnabled: boolean;
+
+  currentEvent = '3x3'
+  
+  constructor(private timeService: TimeService) { }
 
   timerButtonClicked(): void {
     if (this.countDownTimerEnabled) {
@@ -61,6 +53,7 @@ export class TimeDisplayComponent implements OnDestroy {
   onKeyDown(event: KeyboardEvent): void {
     if (this.timing) {
       this.stopTimer();
+      this.submitTime();
     }
   }
 
@@ -96,7 +89,12 @@ export class TimeDisplayComponent implements OnDestroy {
   }
 
   submitTime(): void {
-    this.timeService.addSolve({time: this.timeCounter});
+    console.log('submitTime');
+    this.timeService.addSolve({
+      time: this.timeCounter,
+      event: this.currentEvent,
+      solveDate: new Date()
+    });
   }
 
   deleteTime(id): void {

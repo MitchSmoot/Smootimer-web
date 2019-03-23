@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs/internal/Observable';
+import { Solve } from 'src/app/shared/models/solve.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +14,20 @@ export class TimeService {
     this.solves = db.collection('solves').valueChanges();
   }
 
-  addSolve(solve: any): any {
-    this.db.collection('solves').add({
-      time: solve.time,
-    });
+  getSolves() {
+    return this.db.collection('solves', ref => ref.orderBy('solveDate', 'desc')).snapshotChanges();
   }
 
-  deleteSolve(id) {
-    this.db.collection('solves').doc(id).delete();
+  addSolve(solve: Solve) {
+    this.db.collection('solves').add(solve);
+  }
+
+  updateSolve(solve: Solve) {
+    this.db.doc('solves/' + solve.id).update(solve);
+  }
+
+  deleteSolve(solveId:string) {
+    this.db.doc('solves/'+ solveId).delete();
   }
 
 }
