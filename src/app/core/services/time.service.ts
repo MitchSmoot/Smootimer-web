@@ -26,8 +26,8 @@ export class TimeService {
     this.db.doc('solves/' + solve.id).update(solve);
   }
 
-  deleteSolve(solveId:string) {
-    this.db.doc('solves/'+ solveId).delete();
+  deleteSolve(solveId: string) {
+    this.db.doc('solves/' + solveId).delete();
   }
 
 }

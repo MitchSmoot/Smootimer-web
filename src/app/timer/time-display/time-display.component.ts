@@ -1,6 +1,4 @@
 import { Component, OnDestroy, HostListener } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Observable } from 'rxjs/internal/Observable';
 import { TimeService } from 'src/app/core/services/time.service';
 
 @Component({
@@ -20,8 +18,8 @@ export class TimeDisplayComponent implements OnDestroy {
   keyBuffer = false;
   countDownTimerEnabled: boolean;
 
-  currentEvent = '3x3'
-  
+  currentEvent = '3x3';
+
   constructor(private timeService: TimeService) { }
 
   timerButtonClicked(): void {
