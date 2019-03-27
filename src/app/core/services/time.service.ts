@@ -15,7 +15,7 @@ export class TimeService {
   }
 
   getSolves() {
-    return this.db.collection('solves', ref => ref.orderBy('solveDate', 'desc')).snapshotChanges();
+    return this.db.collection('solves', ref => ref.orderBy('solveDate', 'desc').limit(25)).snapshotChanges();
   }
 
   addSolve(solve: Solve) {

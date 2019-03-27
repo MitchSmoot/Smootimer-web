@@ -5,5 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class EventService {
 
+  currentEvent = '3x3';
+
   constructor() { }
 }

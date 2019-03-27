@@ -1,5 +1,5 @@
 <div class="card" style="width: 20em;">
-  <h3>3x3{{currentEvent}}</h3>
+  <h3>{{eventService.currentEvent}}</h3>
   <ol>
     <li class="text" *ngFor="let solve of solves">
       {{solve.time | timeDisplay}}

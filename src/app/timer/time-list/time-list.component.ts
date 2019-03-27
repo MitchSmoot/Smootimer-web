@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TimeService } from 'src/app/core/services/time.service';
 import { Solve } from 'src/app/shared/models/solve.model';
+import { EventService } from 'src/app/core/services/event.service';
 
 @Component({
   selector: 'app-time-list',
@@ -12,7 +13,8 @@ export class TimeListComponent implements OnInit {
   solves: Solve[];
 
   constructor(
-    public timeService: TimeService
+    public timeService: TimeService,
+    public eventService: EventService
   ) {  }
 
   ngOnInit() {
