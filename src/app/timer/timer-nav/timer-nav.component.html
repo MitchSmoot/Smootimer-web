@@ -1,0 +1,13 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <ul *ngFor="let event of eventService.events; let i=index" class="navbar-nav">
+      <li *ngIf="i<6" class="nav-item">
+        <div
+          [class.selected]="event.title === eventService.currentEvent.title"
+          (click)="eventClicked(event)">
+          {{event.title}}
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

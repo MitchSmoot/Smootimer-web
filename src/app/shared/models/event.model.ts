@@ -1,3 +1,6 @@
 export class Event {
-    name: string;
+    title: string;
+    official: boolean;
+    puzzleType: string;
+    scrambler: string;
 }

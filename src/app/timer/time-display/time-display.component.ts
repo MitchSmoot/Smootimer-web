@@ -1,5 +1,6 @@
 import { Component, OnDestroy, HostListener } from '@angular/core';
 import { TimeService } from 'src/app/core/services/time.service';
+import { EventService } from 'src/app/core/services/event.service';
 
 @Component({
   selector: 'app-time-display',
@@ -18,9 +19,8 @@ export class TimeDisplayComponent implements OnDestroy {
   keyBuffer = false;
   countDownTimerEnabled: boolean;
 
-  currentEvent = '3x3';
-
-  constructor(private timeService: TimeService) { }
+  constructor(private timeService: TimeService,
+              private eventService: EventService) { }
 
   timerButtonClicked(): void {
     if (this.countDownTimerEnabled) {
@@ -90,7 +90,7 @@ export class TimeDisplayComponent implements OnDestroy {
     console.log('submitTime');
     this.timeService.addSolve({
       time: this.timeCounter,
-      event: this.currentEvent,
+      event: this.eventService.currentEvent.title,
       solveDate: new Date()
     });
   }

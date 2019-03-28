@@ -5,6 +5,7 @@ import { TimeDisplayComponent } from './time-display/time-display.component';
 import { TimeDisplayPipe } from '../core/pipes/time-display.pipe';
 import { TimeListComponent } from './time-list/time-list.component';
 import { CommonModule } from '@angular/common';
+import { TimerNavComponent } from './timer-nav/timer-nav.component';
 
 @NgModule({
   imports: [TimerRoutingModule, CommonModule],
@@ -12,7 +13,8 @@ import { CommonModule } from '@angular/common';
     TimerComponent,
     TimeDisplayComponent,
     TimeDisplayPipe,
-    TimeListComponent
+    TimeListComponent,
+    TimerNavComponent
   ],
   exports: []
 })

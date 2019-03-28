@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TimeService } from 'src/app/core/services/time.service';
 import { Solve } from 'src/app/shared/models/solve.model';
 import { EventService } from 'src/app/core/services/event.service';
+import { TimerService } from 'src/app/core/services/timer.service';
 
 @Component({
   selector: 'app-time-list',
@@ -14,18 +15,13 @@ export class TimeListComponent implements OnInit {
 
   constructor(
     public timeService: TimeService,
+    public timerService: TimerService,
     public eventService: EventService
   ) {  }
 
   ngOnInit() {
-    this.timeService.getSolves().subscribe(data => {
-      this.solves = data.map(e => {
-        return {
-          id: e.payload.doc.id,
-          ...e.payload.doc.data()
-        } as Solve;
-      })
-    });
+    this.timerService.getTimes();
+    this.solves = this.timerService.solves;
   }
 
   log(event) {
