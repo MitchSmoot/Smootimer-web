@@ -1,0 +1,28 @@
+<div class="card" style="width: 400;">
+  <form #solveForm="ngForm" (ngSubmit)="updateSolve" autocomplete="off">
+    <div class="form-group">
+      <label for="event">Event:</label>
+      <input
+        (ngModel)="event"
+        name="event"
+        id="event"
+        type="text"
+        class="form-control"
+        placeholder="Event"/>
+    </div>
+    <div class="form-group">
+      <label for="event">Time</label>
+      <div>{{solve.time | timeDisplay}}</div>
+    </div>
+    <div class="form-group">
+      <label for="event">Date and Time</label>
+      <input
+        (ngModel)="date"
+        name="date"
+        id="date"
+        type="datetime"
+        class="form-control"
+        placeholder="Solve Date"/>
+      </div>
+  </form>
+</div>

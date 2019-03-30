@@ -16,11 +16,16 @@ export class TimeService {
   }
 
   getSolves(amount: number = 25) {
-    return this.db.collection('solves', ref => ref.orderBy('solveDate', 'desc').limit(amount)).snapshotChanges();
+    return this.db.collection('solves', ref => ref.orderBy('solveDate', 'desc')
+                                                  .limit(amount))
+                                                  .snapshotChanges();
   }
 
   getSolvesFiltered(eventName: string = '3x3', amount: number = 25) {
-    return this.db.collection('solves', ref => ref.where('event', '==', eventName).orderBy('solveDate', 'desc').limit(amount)).snapshotChanges();
+    return this.db.collection('solves', ref => ref.where('event', '==', eventName)
+                                                  .orderBy('solveDate', 'desc')
+                                                  .limit(amount))
+                                                  .snapshotChanges();
   }
 
   addSolve(solve: Solve) {
