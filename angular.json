@@ -136,5 +136,8 @@
       }
     }
   },
-  "defaultProject": "smootimer-web"
+  "defaultProject": "smootimer-web",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
