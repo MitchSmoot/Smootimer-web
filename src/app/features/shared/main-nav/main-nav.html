@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <img src="Smootimer-nav-1.png" class="nav-icon">
+      <button class="navbar-toggler" type="button" data-toggle="collapse"aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/timer">Timer</a>
+        </li>
+        <div>
+          <li class="nav-item">
+            <a class="nav-link" (click)="logout()">Logout</a>
+          </li>          
+        </div>
+        <div>
+          <li class="nav-item">
+            <a class="nav-link" (click)="toggleTheme()">Toggle theme</a>
+          </li>          
+        </div>
+        @if (isDarkModeActive()) {
+          <div>Dark mode is active</div>
+        } @else {
+          <div>Light mode is active</div>
+        }
+
+        <ng-template #showLogin>
+          <li class="nav-item">
+            <a class="nav-link" (click)="login()">Login</a>
+          </li>
+        </ng-template>
+        <!-- <li class="nav-item">
+          <a class="nav-link">Sign Up</a>
+        </li> -->
+      </ul>
+    </div>
+  </div>
+</nav>

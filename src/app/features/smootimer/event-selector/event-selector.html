@@ -1,0 +1,15 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    @for (event of eventService.events; track event.title) {
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <div
+            [class.selected]="event.title === eventService.currentEvent.title"
+            (click)="eventClicked(event)">
+            {{event.title}}
+          </div>
+        </li>
+      </ul>
+    }
+  </div>
+</nav>

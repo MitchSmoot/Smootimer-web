@@ -1,0 +1,17 @@
+<div class="timer-block container">
+  <div class="card text-center" style="width: 100%; height: 300px; text-align: center; margin-top: 40px">
+    <div>
+      <span class="timer-display">{{timeCounter | timeDisplay}}</span>
+      <!-- <span *ngIf="countingDown==true" class="countdown-display">{{countdown}}</span> -->
+      <div>
+        <div class="btn btn-warning"
+          (click)="timerButtonClicked()">
+          {{buttonText}}
+        </div>
+        <div>
+          <input type="checkbox" value="countDownTimerEnabled">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

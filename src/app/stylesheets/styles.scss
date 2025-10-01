@@ -1,0 +1,27 @@
+@use 'themes';
+
+body {
+  line-height: 1.5;
+  min-height: 100vh;
+  background-color: var(--clr-bg-primary);
+  color: var(--clr-text-primary);
+  font-family: var(--ff-sans);
+}
+
+.timer-display {
+    font-size: 5em;
+    font-weight: bold;
+}
+
+.selected {
+    color: #0f0;
+    border-bottom: 4px solid blue;
+}
+
+.time-delete-button {
+    font-weight: 700;
+}
+
+.time-delete-button:hover {
+    cursor: pointer;
+}

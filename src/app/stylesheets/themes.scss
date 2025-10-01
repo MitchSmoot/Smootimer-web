@@ -1,0 +1,46 @@
+:root {
+  /* --- Light Mode Colors --- */
+  --clr-nav-upper: #ccc;
+  --clr-nav-upper-border: #bbb;
+  --clr-nav-lower: #ddd;
+  --clr-nav-lower-border: #ccc;
+  --clr-bg-primary: #eee;
+  --clr-bg-secondary: #ddd;
+  --clr-bg-accent: #255266;
+  --clr-bg-white: #fff;
+  --clr-text-primary: #333;
+  --clr-text-accent: #FCB040;
+  --clr-text-black: #000;
+  
+  .dark {
+    /* --- Dark Mode Colors --- */
+    --clr-nav-upper: #171717;
+    --clr-nav-upper-border: #050505;
+    --clr-nav-lower: #222;
+    --clr-nav-lower-border: #111;
+    --clr-bg-primary: #2a2a2a;
+    --clr-bg-secondary: #444;
+    --clr-bg-accent: #255266;
+    --clr-bg-white: #fff;
+    --clr-text-primary: #ddd;
+    --clr-text-accent: #FCB040;
+    --clr-text-black: #000;
+  }
+  
+  /* --- Layouts --- */
+  --border-radius: 1rem;
+
+  // Make sure --nav-height stays consistent with the height of the nav bar
+  --nav-height: 136px;
+  --nav-logo-height: 128px;
+  --article-width: 70rem;
+  // TODO:
+  // Var for spacing values
+  // Var for shadows
+  // Var for gradients if needed
+
+  .large-text-mode {
+    --nav-height: 150px;
+    --article-width: 85rem;
+  }
+}
