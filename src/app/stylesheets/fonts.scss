@@ -1,0 +1,28 @@
+:root {
+
+  /* Fonts defined here */
+  --ff-serif: 'Roboto Slab', serif;
+  --ff-sans: 'Roboto', sans-serif;
+
+  /* Font Sizes */
+  --fs-h1: 3rem;
+  --fs-h2: 2.25rem;
+  --fs-h3: 2rem;
+  --fs-h4: 1.65rem;
+  --fs-h5: 1.4rem;
+  --fs-h6: 1.2rem;
+  --fs-nav-link: 1.5rem;
+  --fs-text: 1.2rem;
+
+  .large-text-mode {
+    --fs-h1: 3rem;
+    --fs-h2: 2.6rem;
+    --fs-h3: 2.45rem;
+    --fs-h4: 2.3rem;
+    --fs-h5: 2.15rem;
+    --fs-h6: 2rem;
+    --fs-nav-link: 2rem;
+    --fs-text: 2rem;
+  }
+
+}

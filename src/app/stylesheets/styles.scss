@@ -1,4 +1,28 @@
 @use 'themes';
+@use 'fonts';
+
+/* --- Global Resets --- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0
+}
+
+/* Disable browser default color changes for activated links */
+a, a:visited, a:hover, a:active {
+  color: inherit;
+}
+
+/* ------------------------- */
+/* ----- Global Styles ----- */
+/* ------------------------- */
+
+img, svg, video {
+  max-width: 100%;
+  display: block;
+}
 
 body {
   line-height: 1.5;
@@ -6,6 +30,187 @@ body {
   background-color: var(--clr-bg-primary);
   color: var(--clr-text-primary);
   font-family: var(--ff-sans);
+}
+
+h1 {
+  font-size: var(--fs-h1);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+}
+
+h3 {
+  font-size: var(--fs-h3);
+}
+
+h4 {
+  font-size: var(--fs-h4);
+}
+
+h5 {
+  font-size: var(--fs-h5);
+}
+
+h6 {
+  font-size: var(--fs-h6);
+}
+
+p {
+  font-size: var(--fs-text);
+  padding: 0.5rem 0.2rem;
+  letter-spacing: 1px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+article {
+  max-width: var(--article-width);
+  margin-inline: auto;
+  padding-inline: 2rem;
+  text-wrap: wrap;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+
+button {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-text);
+  font-weight: 700;;
+  color: var(--clr-text-accent);
+  background-color: transparent;
+  border: 3px solid var(--clr-text-accent);
+  border-radius: .5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  
+  &:hover {
+    background-color: var(--clr-bg-accent);
+    color: var(--clr-text-accent);
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
+  }
+}
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+  &:hover {
+    color: var(--clr-text-accent);
+    text-decoration: underline;
+  }
+  &:active {
+    color: var(--clr-bg-accent);
+  }
+}
+
+.button-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.yellow {
+  color: var(--clr-grotto-yellow);
+}
+
+.blue {
+  color: var(--clr-grotto-blue);
+}
+
+.card {
+  z-index: 2;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem;
+  background-color: var(--clr-nav-lower);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--clr-nav-lower-border);
+}
+
+.card-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem;
+  width: min-content;
+  border-radius: var(--border-radius);
+  background-color: var(--clr-bg-secondary);
+  box-shadow: 0 0 0.5rem 0.25rem rgba(0, 0, 0, 0.25);
+  transition: all 0.25s ease-in-out;
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 0.5rem 0.25rem rgba(0, 0, 0, 0.5);
+  }
+
+}
+
+.modal-background {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - var(--nav-height));
+  left: 0;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  transition: 150ms opacity ease-in;
+}
+
+.modal {
+  z-index: 2;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem;
+  background-color: var(--clr-nav-lower);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--clr-nav-lower-border);
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  margin: 0px;;
+  width: 100%;
+}
+
+* {
+  transition: 
+  background-color .15s ease-in-out,
+  font-size .15s ease-in-out,
+  height .15s ease-in-out;
+}
+
+/* remove animations for those who have them disabled in browser */
+@media (prefers-reduced-motion: reduce) {  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 .timer-display {

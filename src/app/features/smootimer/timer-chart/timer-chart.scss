@@ -1,0 +1,23 @@
+.timer-chart {
+	width: 100%;
+	.chart-container {
+		width: 100%;
+		min-height: 240px;
+	}
+
+	svg {
+		font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	}
+
+	.line {
+		stroke-linejoin: round;
+		stroke-linecap: round;
+	}
+
+	.x-axis path,
+	.y-axis path,
+	.x-axis line,
+	.y-axis line {
+		stroke: #ddd;
+	}
+}
