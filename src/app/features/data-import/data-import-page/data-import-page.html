@@ -1,0 +1,11 @@
+<p>data-import-page works!</p>
+<div>
+  <label for="fileInput">Select a CsTimer export file:</label>
+  <input type="file" (change)="onFileSelected($event.target.files ? $event.target.files[0] : null)" id="fileInput" />
+</div>
+
+<div>
+  <label for ="jsonInput">Or paste JSON data here:</label>
+  <textarea id="jsonInput" rows="10" cols="50"></textarea>
+  <button (click)="submitJson($event)">Import JSON</button>
+</div>

@@ -5,6 +5,9 @@ export interface Solve {
     event: string;
     time: number;
     solveDate: Date;
+    penalty?: number;
+    scramble?: string;
+    comment?: string;
 }
 
 
@@ -22,6 +25,15 @@ export class TimerService {
   addSolve(solve: Solve) {
     solve.id = crypto.randomUUID();
     this.solves.update(list => [...list, solve]);
+    console.log(this.solves);
+  }
+
+  addSolves(solves: Solve[]) {
+    for (const solve of solves) {
+      solve.id = crypto.randomUUID();
+    }
+    this.solves.update(list => [...list, ...solves]);
+    this.solves.update(list => list.sort((a, b) => a.solveDate.getTime() - b.solveDate.getTime()));
     console.log(this.solves);
   }
 
