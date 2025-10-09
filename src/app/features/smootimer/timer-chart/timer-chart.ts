@@ -58,6 +58,10 @@ export class TimerChart {
       .x(d => x(d.solveDate))
       .y(d => y(d.time));
 
+    const tooltipDiv = d3.select("#chart").append("div")
+      .attr("id", "tooltip")
+      .style("opacity", 0);
+
     // Add the line path
     this.svg.append('path')
       .datum(solves)
@@ -65,6 +69,48 @@ export class TimerChart {
       .attr('stroke', 'steelblue')
       .attr('stroke-width', 2)
       .attr('d', line);
+
+    // Add circles for each solve
+    this.svg.selectAll("circle")
+      .data(solves)
+      .enter()
+      .append("circle")
+      .attr("cx", d => x(d.solveDate))
+      .attr("cy", d => y(d.time))
+      .attr("r", 5)
+      .style("fill", "steelblue").on("mouseover", function(event, d) {
+        d3.select(this)
+          .transition()
+          .duration(100)
+          .attr("r", 7)
+          .style("fill", "orange");
+
+        const tooltip = d3.select("#tooltip");
+        tooltip.transition()
+          .duration(10)
+          .style("opacity", 1);
+        tooltip.html(`
+          Time: ${d.time} ms<br/>
+          Date: ${d.solveDate.toLocaleString()}<br/>
+          Event: ${d.event}<br/>
+          ${d.penalty ? `Penalty: ${d.penalty}<br/>` : ''}
+          ${d.comment ? `Comment: ${d.comment}<br/>` : ''}
+          ${d.scramble ? `Scramble: ${d.scramble}<br/>` : ''}
+        `)
+          .style("left", (event.pageX + 16) + "px")
+          .style("top", (event.pageY - 28) + "px");
+      })
+      .on("mouseout", function() {
+        d3.select(this)
+          .transition()
+          .duration(100)
+          .attr("r", 5)
+          .style("fill", "steelblue");
+
+        d3.select("#tooltip").transition()
+          .duration(100)
+          .style("opacity", 0);
+      });
 
     // Add x-axis
     this.svg.append('g')
