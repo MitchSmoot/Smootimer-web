@@ -49,6 +49,7 @@ export class Timer {
 
   @HostListener('window:keydown', ['$event'])
   onKeyDown(event: KeyboardEvent): void {
+    event.code === 'Space' && event.preventDefault();
     if (this.timing) {
       this.stopTimer();
       this.submitTime();
