@@ -1,3 +1,4 @@
+import { EventService } from './../timer/event.service';
 import { Component, effect, inject } from '@angular/core';
 import * as d3 from 'd3';
 import { Solve, TimerService } from '../timer/timer.service';
@@ -10,19 +11,21 @@ import { Solve, TimerService } from '../timer/timer.service';
 })
 export class TimerChart {
   private timerService = inject(TimerService);
+  private EventService = inject(EventService);
   solves = this.timerService.solves();
 
 
   private svg: d3.Selection<SVGGElement, unknown, HTMLElement, any> | null = null;
-  private width = 600;
-  private height = 400;
+  private width = 900;
+  private height = 600;
   private margin = { top: 20, right: 20, bottom: 30, left: 50 };
 
   constructor() {
     // Effect to react to data changes
     effect(() => {
       const solves = this.timerService.solves();
-      this.updateChart(solves);
+      const filteredSolves = solves.filter(s => s.event === this.EventService.currentEvent().title);
+      this.updateChart(filteredSolves);
     });
   }
 

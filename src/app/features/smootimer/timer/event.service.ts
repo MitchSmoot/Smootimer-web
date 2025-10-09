@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal, WritableSignal } from '@angular/core';
 
 export interface Event {
     title: string;
@@ -31,11 +31,11 @@ export class EventService {
     { title: 'PLL Time Attack', official: false, puzzleType: '3x3',      scrambler: 'none' }
   ];
 
-  currentEvent: Event = this.events[1];
+  currentEvent: WritableSignal<Event> = signal(this.events[1]);
 
   constructor() { }
 
   changeEvent(event: Event) {
-    this.currentEvent = event;
+    this.currentEvent.set(event);
   }
 }

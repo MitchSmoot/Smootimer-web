@@ -87,10 +87,9 @@ export class Timer {
   }
 
   submitTime(): void {
-    console.log('submitTime');
     this.timerService.addSolve({
       time: this.timeCounter,
-      event: this.eventService.currentEvent.title,
+      event: this.eventService.currentEvent().title,
       solveDate: new Date()
     });
   }

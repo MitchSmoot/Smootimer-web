@@ -1,7 +1,7 @@
 <div class="card" style="width: 20em;">
-  <h3>{{eventService.currentEvent.title}}</h3>
+  <h3>{{eventService.currentEvent().title}}</h3>
   <ol>
-    @for (solve of solves(); track solve.id) {
+    @for (solve of filteredSolves(); track solve.id) {
       <li class="text">
         {{solve.time | timeDisplay}}
         <a class="time-delete-button" (click)="delete(solve.id)">X</a>

@@ -1,3 +1,4 @@
+import { Event } from './event.service';
 import { Injectable, signal, WritableSignal } from '@angular/core';
 
 export interface Solve {
@@ -25,7 +26,6 @@ export class TimerService {
   addSolve(solve: Solve) {
     solve.id = crypto.randomUUID();
     this.solves.update(list => [...list, solve]);
-    console.log(this.solves);
   }
 
   addSolves(solves: Solve[]) {
@@ -34,7 +34,6 @@ export class TimerService {
     }
     this.solves.update(list => [...list, ...solves]);
     this.solves.update(list => list.sort((a, b) => a.solveDate.getTime() - b.solveDate.getTime()));
-    console.log(this.solves);
   }
 
   deleteSolve(id: string) {
